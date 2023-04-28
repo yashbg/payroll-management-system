@@ -46,6 +46,13 @@ npm i
 nodemon index.js
 ```
 
+## Troubleshooting
+
+When starting the frontend server, if you get an error with code 'ERR_OSSL_EVP_UNSUPPORTED', then run:
+```bash
+export NODE_OPTIONS=--openssl-legacy-provider
+```
+
 ## Authors
 
 - **Ahmad Amaan**
