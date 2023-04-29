@@ -432,7 +432,7 @@ const generateReports = async (req, res) => {
   Select * from T where email=$1 and month=$2 and year=$3`;
 
   try {
-    const { rows } = await db.query(query,[mail,12,2020]);
+    const { rows } = await db.query(query,[mail,4,2023]);
     console.log(rows);
     return res.status(200).send({ message: "Report Data", data: rows });
   } catch (error) {

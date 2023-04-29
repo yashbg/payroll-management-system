@@ -89,40 +89,41 @@ create table payroll(
 		foreign key (admin_mail) references admin(email) on delete
 	set null
 );
-create function record_attendance() returns trigger as $record_attendance$ BEGIN if date_part('day', current_date) = 1 then with result as (
-	select case
+create function record_attendance() returns trigger as $record_attendance$ BEGIN if date_part('day', current_date) = 29 then with result as (
+	select (case
 			when sum(amount) is null then gross
 			else gross + sum(amount)
-		end as gross_pay,
+		end) as gross_pay,
 		income_tax,
 		email,
 		admin_mail
 	from (
-			select basic_pay + grade_ta + grade_da + grade_bonus -((paid_leave_taken - paid_leave_limit) * 10) as gross,
+			select basic_pay + grade_bonus -((paid_leave_taken - paid_leave_limit) * 10) as gross,
 				0.12 * basic_pay as income_tax,
-				email,
+				result_2.email,
 				admin_mail,
 				is_given.amount as amount
 			from (
 					(
-						select email,
-							admin_mail,
+						select employee.email as email,
+							organisation.email as admin_mail,
 							grade_id,
 							paid_leave_taken,
 							paid_leave_limit
 						from employee
-							natural join organisation
-						where email = new.email
+							join organisation
+						on employee.org_name = organisation.org_name
 					) as result_1
 					natural join gradepay
 				) as result_2
-				left outer join is_given on result_2.email = is_given.emp_mail
+				left outer join is_given on result_2.email = is_given.email
 		) as result_3
 	group by gross,
 		income_tax,
 		email,
 		admin_mail
 )
+
 insert into payroll(
 		month,
 		year,
