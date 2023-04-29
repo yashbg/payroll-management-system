@@ -76,6 +76,7 @@ const UpdateDetails = (props) => {
       .then((res) => {
         console.log(res);
         setMessage(res.message);
+        handleClickOpen();
       })
       .catch((err) => {
         console.error(err);
