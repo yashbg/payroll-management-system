@@ -37,7 +37,7 @@ const UpdateDetails = (props) => {
     address: "",
     dept_id: "",
     grade_id: "",
-    org_name: "SGSITS",
+    org_name: "",
     doj: "",
     email: props.location.state.email,
   };
@@ -163,6 +163,7 @@ const UpdateDetails = (props) => {
         formik.setFieldValue("state", res.data[0].state);
         formik.setFieldValue("pincode", res.data[0].pincode);
         formik.setFieldValue("address", res.data[0].address);
+        formik.setFieldValue("org_name", res.data[0].org_name);
         formik.setFieldValue(
           "doj",
           moment(res.data[0].doj.slice(0, 10), "YYYY-MM-DD").format(

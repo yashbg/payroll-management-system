@@ -22,7 +22,7 @@ const EmployeeProfile = (props) => {
     address: "",
     dept_id: "",
     grade_id: "",
-    org_name: "SGSITS",
+    org_name: "",
     doj: "",
     email: props.location.state.email,
     years_of_service: "",
