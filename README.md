@@ -23,11 +23,13 @@ psql -h localhost -U me -d api -f backend/commands/DDL.sql
 
 ### To create an Admin
 
-Send a post request to http://localhost:3003/api/adminSignup with json body containing "email", "password", "username". This can be done using postman or any other tools.
+Send a post request to http://localhost:3003/api/adminSignup with `x-www-form-urlencoded` type body containing `email`, `password` and `username`. This can be done using postman or any other tools.
 
 ### To create an Organisation
 
-Send a post request to http://localhost:3003/api/addOrganisation with json body containing org_name, email, location, contact_number, paid_leave_limit, encashed_leave_limit. This can be done using postman or any other tools.
+Send a post request to http://localhost:3003/api/addOrganisation with `x-www-form-urlencoded` type body containing `org_name`, `email`, `location`, `contact_number`, `paid_leave_limit` and `encashed_leave_limit` using Postman.
+
+Note: Use the same email as that of the admin.
 
 ## Running the application
 
