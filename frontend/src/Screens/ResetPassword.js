@@ -25,18 +25,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 
 import LockIcon from "@material-ui/icons/Lock";
 import { base_url } from "../baseUrl";
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://github.com/nandwalritik">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -188,7 +176,6 @@ const ResetPassword = (props) => {
             </Button>
           </form>
         </div>
-        <Box mt={8}>{/* <Copyright /> */}</Box>
       </Container>
     </div>
   );
