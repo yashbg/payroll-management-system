@@ -18,8 +18,7 @@ psql
 > CREATE DATABASE api;
 > GRANT ALL ON SCHEMA public TO me;
 > \q
-cd backend/commands
-psql -h localhost -U me -d api -a -f DDL.sql
+psql -h localhost -U me -d api -f backend/commands/DDL.sql
 ```
 
 ### To create an Admin
